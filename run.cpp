@@ -111,7 +111,7 @@ void compress(const Args &Args) {
     std::ifstream Input(Args.Input);
     std::string Line;
     while (std::getline(Input, Line)) {
-        std::sscanf(Line.c_str(), "%d %d %hhd", &N1, &N2, &W);
+        std::sscanf(Line.c_str(), "%d\t%d\t%hhd", &N1, &N2, &W);
         #ifdef DEBUG
         std::cerr << "N1: " << N1 << ", N2: " << N2 << ", W: " << int(W) << std::endl;
         #endif
@@ -157,7 +157,7 @@ void decompress(const Args &Args) {
         for (int J = 0; J < N; J++) {
             In.read(reinterpret_cast<char*>(&V), sizeof(V));
             In.read(reinterpret_cast<char*>(&W), sizeof(W));
-            Out << Key << " " << V << " " << int(W) << std::endl;
+            Out << Key << "\t" << V << "\t" << int(W) << std::endl;
         }
     }
     Out.close();
